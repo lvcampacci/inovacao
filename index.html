@@ -1,0 +1,1358 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Inovação Bartenders — Barman e coquetelaria para casamentos, debutantes, festas particulares e eventos corporativos em São Paulo.">
+  <title>Inovação Bartenders | Experiências que surpreendem</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #10100f;
+      --surface: #191815;
+      --gold: #d6b477;
+      --gold-light: #f0d7a4;
+      --white: #f8f5ef;
+      --muted: #aaa49a;
+      --line: rgba(255,255,255,.12);
+      --font: 'DM Sans', sans-serif;
+      --display: 'Manrope', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: var(--font); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    button { font: inherit; }
+
+    ::selection { background: var(--gold); color: #111; }
+
+    .container {
+      width: min(1240px, 88%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 27px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      font-weight: 600;
+    }
+
+    .section-title em,
+    .section-title span {
+      color: var(--gold);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .section-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+      max-width: 490px;
+    }
+
+    .gold-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 17px 25px;
+      background: var(--gold);
+      color: #17130d;
+      border: 1px solid var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      transition: .35s ease;
+    }
+
+    .gold-button:hover {
+      background: transparent;
+      color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .gold-button b { font-size: 18px; }
+
+    /* HEADER */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 30;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+
+    .nav {
+      height: 90px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .logo span {
+      display: block;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 5px;
+      margin-top: 7px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      font-size: 11px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-links .nav-contact {
+      border: 1px solid rgba(214,180,119,.7);
+      color: var(--gold);
+      padding: 12px 17px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: white;
+      border: 0;
+      background: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 850px;
+      height: 100vh;
+      max-height: 1050px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: #171411;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-photo img {
+      object-position: center 38%;
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(10,9,8,.88) 0%, rgba(10,9,8,.67) 42%, rgba(10,9,8,.13) 100%),
+        linear-gradient(0deg, rgba(10,9,8,.7), transparent 58%);
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.02); }
+      to { transform: scale(1.12); }
+    }
+
+    .hero-content {
+      max-width: 780px;
+      padding-top: 75px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content .eyebrow { margin-bottom: 30px; }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7.2vw, 100px);
+      line-height: .99;
+      letter-spacing: -5px;
+      font-weight: 600;
+    }
+
+    .hero h1 em {
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .hero-description {
+      color: rgba(255,255,255,.8);
+      max-width: 430px;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 28px 0 34px;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: 38px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .hero-note {
+      color: rgba(255,255,255,.7);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator i {
+      display: block;
+      width: 45px;
+      height: 1px;
+      background: var(--gold);
+      animation: lineMove 2s infinite;
+    }
+
+    @keyframes lineMove {
+      0%,100% { transform: scaleX(.4); transform-origin: left; }
+      50% { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .hero-orbit {
+      position: absolute;
+      width: 470px;
+      height: 470px;
+      right: -150px;
+      top: 20%;
+      border: 1px solid rgba(214,180,119,.25);
+      border-radius: 50%;
+      animation: rotate 35s linear infinite;
+      pointer-events: none;
+    }
+
+    .hero-orbit::after {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--gold);
+      top: 15%;
+      left: 15%;
+      box-shadow: 0 0 25px var(--gold);
+    }
+
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    /* MARQUEE */
+
+    .marquee {
+      position: relative;
+      z-index: 4;
+      overflow: hidden;
+      padding: 18px 0;
+      background: var(--gold);
+      color: #17130d;
+      transform: rotate(-1deg) scale(1.02);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-track span {
+      white-space: nowrap;
+      padding: 0 28px;
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .marquee-track b { padding-left: 28px; font-size: 18px; }
+
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ABOUT */
+
+    .about { padding: 155px 0 135px; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 95px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      min-height: 570px;
+    }
+
+    .about-main {
+      position: absolute;
+      width: 77%;
+      height: 465px;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    .about-main img,
+    .about-small img { transition: transform 1s; }
+
+    .about-main:hover img,
+    .about-small:hover img { transform: scale(1.06); }
+
+    .about-small {
+      position: absolute;
+      width: 46%;
+      height: 250px;
+      right: 0;
+      bottom: 0;
+      border: 8px solid var(--bg);
+      overflow: hidden;
+    }
+
+    .round-stamp {
+      position: absolute;
+      width: 112px;
+      height: 112px;
+      right: 3%;
+      top: 5%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #17130d;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      transform: rotate(12deg);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { translate: 0 0; }
+      50% { translate: 0 -14px; }
+    }
+
+    .about-content .eyebrow { margin-bottom: 25px; }
+    .about-content .section-title { margin-bottom: 25px; }
+    .about-content .section-text { margin-bottom: 18px; }
+
+    .about-signature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 32px;
+    }
+
+    .about-signature i { width: 45px; height: 1px; background: var(--gold); }
+    .about-signature span { color: var(--gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* STATS */
+
+    .stats {
+      padding: 38px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+
+    .stat { text-align: center; border-right: 1px solid var(--line); }
+    .stat:last-child { border: 0; }
+
+    .stat strong {
+      color: var(--gold);
+      font-family: var(--display);
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    .stat p {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* EVENTS */
+
+    .events { padding: 140px 0; background: var(--surface); }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 55px;
+    }
+
+    .section-heading .section-title { margin-top: 22px; }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+    }
+
+    .event-card {
+      min-height: 490px;
+      position: relative;
+      overflow: hidden;
+      background: #292622;
+    }
+
+    .event-card img { transition: transform 1s; }
+    .event-card:hover img { transform: scale(1.07); }
+
+    .event-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.9), transparent 68%);
+    }
+
+    .event-info {
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      z-index: 2;
+    }
+
+    .event-info small {
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .event-info h3 {
+      font-family: var(--display);
+      font-size: clamp(27px,3vw,42px);
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .event-info p { color: rgba(255,255,255,.75); font-size: 12px; margin-top: 8px; }
+
+    /* SERVICES */
+
+    .services { padding: 145px 0; }
+
+    .services-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .services-intro .section-title { margin-top: 22px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .service-item {
+      min-height: 235px;
+      padding: 32px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      transition: .4s;
+    }
+
+    .service-item:hover {
+      background: rgba(214,180,119,.07);
+      transform: translateY(-5px);
+    }
+
+    .service-number { color: var(--gold); font-size: 9px; letter-spacing: 2px; }
+    .service-arrow { position: absolute; top: 28px; right: 28px; color: var(--gold); font-size: 20px; transition: .3s; }
+    .service-item:hover .service-arrow { transform: translate(5px,-5px); }
+
+    .service-item h3 {
+      font-family: var(--display);
+      font-size: 22px;
+      margin: 42px 0 12px;
+    }
+
+    .service-item p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 270px;
+    }
+
+    /* DRINKS */
+
+    .drinks { padding: 140px 0; background: #171613; }
+
+    .drinks-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 85px;
+      align-items: center;
+    }
+
+    .drinks-content .eyebrow { margin-bottom: 25px; }
+    .drinks-content .section-title { margin-bottom: 25px; }
+    .drinks-content .section-text { margin-bottom: 20px; }
+
+    .drinks-content .gold-button { margin-top: 12px; }
+
+    .drink-visual { min-height: 560px; position: relative; }
+
+    .drink-photo-main {
+      position: absolute;
+      width: 66%;
+      height: 440px;
+      right: 0;
+      top: 0;
+      overflow: hidden;
+    }
+
+    .drink-photo-small {
+      position: absolute;
+      width: 48%;
+      height: 260px;
+      left: 0;
+      bottom: 0;
+      border: 8px solid #171613;
+      overflow: hidden;
+    }
+
+    .drink-label {
+      position: absolute;
+      right: 2%;
+      bottom: 15px;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    /* STATEMENT */
+
+    .statement {
+      padding: 140px 0;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .statement::before,
+    .statement::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border: 1px solid rgba(214,180,119,.15);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+
+    .statement::before { width: 480px; height: 480px; }
+    .statement::after { width: 650px; height: 650px; }
+
+    .statement p {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .statement h2 {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: auto;
+      font-family: var(--display);
+      font-size: clamp(38px,6vw,75px);
+      line-height: 1.1;
+      letter-spacing: -3px;
+      font-weight: 500;
+    }
+
+    .statement h2 em { color: var(--gold); font-weight: 400; }
+
+    /* GALLERY */
+
+    .gallery { padding: 120px 0 145px; }
+
+    .gallery-heading { margin-bottom: 42px; }
+    .gallery-heading .section-title { margin-top: 20px; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr .8fr;
+      grid-template-rows: 250px 250px;
+      gap: 14px;
+    }
+
+    .gallery-item { overflow: hidden; background: #292622; }
+    .gallery-item img { transition: transform .8s; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+
+    /* CTA */
+
+    .final-cta {
+      padding: 105px 0;
+      text-align: center;
+      background:
+        linear-gradient(rgba(10,9,8,.84),rgba(10,9,8,.9)),
+        url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=2000&q=85") center/cover;
+    }
+
+    .final-cta .eyebrow { justify-content: center; }
+
+    .final-cta h2 {
+      max-width: 850px;
+      margin: 25px auto;
+      font-family: var(--display);
+      font-size: clamp(38px,6vw,72px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      font-weight: 500;
+    }
+
+    .final-cta h2 span { color: var(--gold); font-style: italic; }
+    .final-cta p { color: rgba(255,255,255,.75); font-size: 13px; margin-bottom: 32px; }
+
+    /* FOOTER */
+
+    footer { padding: 55px 0 28px; background: #0b0b0a; }
+
+    .footer-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand p {
+      max-width: 280px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer-links { display: flex; gap: 70px; }
+    .footer-column h4 { color: var(--gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+    .footer-column a, .footer-column p { display: block; color: var(--muted); font-size: 12px; margin: 12px 0; transition: .3s; }
+    .footer-column a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 25px;
+      color: #77736d;
+      font-size: 10px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      z-index: 45;
+      right: 24px;
+      bottom: 24px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      transition: .3s;
+    }
+
+    .whatsapp:hover { transform: translateY(-5px) scale(1.06); }
+    .whatsapp svg { width: 27px; fill: white; }
+
+    /* REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .15s; }
+    .delay-2 { transition-delay: .3s; }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        padding: 15px 6% 25px;
+        background: #11100e;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.active { display: flex; }
+      .nav-links a { padding: 15px 0; border-bottom: 1px solid var(--line); }
+      .nav-links .nav-contact { text-align: center; margin-top: 14px; }
+      .menu-toggle { display: block; }
+
+      .about-grid, .drinks-layout { grid-template-columns: 1fr; gap: 55px; }
+      .about-visual { min-height: 500px; }
+      .about-main { height: 420px; }
+      .about-small { height: 220px; }
+      .event-card { min-height: 400px; }
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .drinks-layout { gap: 45px; }
+      .gallery-grid { grid-template-rows: 220px 220px; }
+    }
+
+    @media (max-width: 600px) {
+      .container { width: 88%; }
+      .nav { height: 76px; }
+      .nav-links { top: 76px; }
+
+      .hero { min-height: 740px; height: 92vh; }
+      .hero-photo img { object-position: 58% center; }
+      .hero-photo::after {
+        background:
+          linear-gradient(90deg, rgba(10,9,8,.8), rgba(10,9,8,.28)),
+          linear-gradient(0deg, rgba(10,9,8,.78), transparent 65%);
+      }
+
+      .hero h1 { font-size: clamp(47px,12.5vw,68px); letter-spacing: -3px; }
+      .hero-description { max-width: 310px; font-size: 13px; }
+      .hero-orbit { width: 300px; height: 300px; right: -180px; top: 30%; }
+      .hero-bottom { bottom: 23px; }
+      .hero-note, .scroll-indicator { font-size: 8px; }
+
+      .about, .events, .services, .drinks, .gallery { padding: 95px 0; }
+      .section-title { letter-spacing: -2px; }
+
+      .about-visual { min-height: 400px; }
+      .about-main { width: 83%; height: 340px; }
+      .about-small { width: 48%; height: 180px; border-width: 6px; }
+      .round-stamp { width: 88px; height: 88px; font-size: 7px; }
+
+      .stats-grid { gap: 8px; }
+      .stat strong { font-size: 28px; }
+      .stat p { font-size: 8px; letter-spacing: 1px; }
+
+      .section-heading, .services-intro { display: block; }
+      .section-heading .section-text, .services-intro .section-text { margin-top: 20px; }
+
+      .event-grid { grid-template-columns: 1fr; }
+      .event-card { min-height: 420px; }
+      .event-info { left: 23px; bottom: 25px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .service-item { min-height: 200px; padding: 27px; }
+      .service-item h3 { margin-top: 30px; }
+
+      .drink-visual { min-height: 420px; }
+      .drink-photo-main { height: 340px; width: 75%; }
+      .drink-photo-small { height: 190px; width: 52%; }
+
+      .statement { padding: 100px 0; }
+      .statement h2 { letter-spacing: -2px; }
+      .statement::before { width: 320px; height: 320px; }
+      .statement::after { width: 420px; height: 420px; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 210px 160px 160px;
+        gap: 9px;
+      }
+
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item:nth-child(4) { grid-column: span 2; }
+
+      .final-cta { padding: 85px 0; }
+      .footer-main { flex-direction: column; }
+      .footer-links { gap: 35px; flex-wrap: wrap; }
+      .footer-bottom { flex-direction: column; gap: 10px; }
+      .whatsapp { width: 53px; height: 53px; right: 17px; bottom: 17px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo">
+        INOVAÇÃO
+        <span>BARTENDERS</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#sobre">A experiência</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#drinks">Coquetelaria</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato" class="nav-contact">Solicitar orçamento ↗</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- INÍCIO: CASAL BRINDANDO -->
+    <section class="hero" id="inicio">
+      <div class="hero-photo">
+        <img
+          src="https://images.pexels.com/photos/13434413/pexels-photo-13434413.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          data-fallback="https://images.unsplash.com/photo-1706742896707-44c5784bd31c?auto=format&fit=crop&w=2200&q=85"
+          alt="Noivos felizes brindando com taças durante a celebração do casamento"
+          fetchpriority="high">
+      </div>
+
+      <div class="hero-orbit"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Barman & coquetelaria para eventos</div>
+
+          <h1>
+            Seu evento.<br>
+            Seu momento.<br>
+            <em>Um brinde inesquecível.</em>
+          </h1>
+
+          <p class="hero-description">
+            Drinks especiais, apresentação impecável e experiências que transformam cada celebração em algo único.
+          </p>
+
+          <a href="#contato" class="gold-button">
+            Vamos criar seu evento <b>↗</b>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="hero-note">São Paulo · Atendimento para eventos</div>
+        <div class="scroll-indicator"><i></i> Explore a experiência</div>
+      </div>
+    </section>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Drinks especiais <b>✳</b></span>
+        <span>Momentos únicos <b>✳</b></span>
+        <span>Coquetelaria premium <b>✳</b></span>
+        <span>Experiências memoráveis <b>✳</b></span>
+        <span>Drinks especiais <b>✳</b></span>
+        <span>Momentos únicos <b>✳</b></span>
+        <span>Coquetelaria premium <b>✳</b></span>
+        <span>Experiências memoráveis <b>✳</b></span>
+      </div>
+    </div>
+
+    <!-- SOBRE -->
+    <section class="about" id="sobre">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <div class="about-main">
+            <img
+              src="https://static.wixstatic.com/media/f324eb_12b94529a78840bbacbefb7d1f26bf9c~mv2.png/v1/fill/w_1200%2Ch_800%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/f324eb_12b94529a78840bbacbefb7d1f26bf9c~mv2.png"
+              data-fallback="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1000&q=85"
+              alt="Bartender preparando uma caipirinha com limão fresco"
+              loading="lazy">
+          </div>
+
+          <div class="about-small">
+            <img
+              src="https://cdn.sezamo.ro/images/meals/large/recipe_2169_1776931043512_classic-brazilian-caipirinha-cocktail_290bb664.jpg"
+              data-fallback="https://images.unsplash.com/photo-1536935338788846bb9981813?auto=format&fit=crop&w=800&q=85"
+              alt="Caipirinha clássica com limão, gelo e hortelã"
+              loading="lazy">
+          </div>
+
+          <div class="round-stamp">FEITO PARA<br>CELEBRAR<br>✳ MOMENTOS</div>
+        </div>
+
+        <div class="about-content reveal delay-1">
+          <div class="eyebrow">Muito além de servir drinks</div>
+
+          <h2 class="section-title">
+            A arte de criar<br>
+            momentos <span>especiais.</span>
+          </h2>
+
+          <p class="section-text">
+            Um bar bem apresentado, drinks preparados na hora e profissionais que fazem a diferença em cada detalhe.
+          </p>
+
+          <p class="section-text">
+            A Inovação Bartenders leva estrutura, criatividade e coquetelaria para eventos de diferentes estilos, sempre com atenção à experiência de cada convidado.
+          </p>
+
+          <div class="about-signature">
+            <i></i>
+            <span>Experiência em cada detalhe</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <strong>01</strong>
+          <p>Experiência personalizada</p>
+        </div>
+        <div class="stat reveal delay-1">
+          <strong>100%</strong>
+          <p>Atenção aos detalhes</p>
+        </div>
+        <div class="stat reveal delay-2">
+          <strong>∞</strong>
+          <p>Motivos para brindar</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="events" id="eventos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">Para cada tipo de celebração</div>
+            <h2 class="section-title">O cenário muda.<br><span>A experiência permanece.</span></h2>
+          </div>
+
+          <p class="section-text">
+            Do casamento intimista à grande festa, criamos uma experiência de bar que combina com a personalidade do seu evento.
+          </p>
+        </div>
+
+        <div class="event-grid">
+          <article class="event-card reveal">
+            <img
+              src="https://images.pexels.com/photos/13434413/pexels-photo-13434413.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              data-fallback="https://images.unsplash.com/photo-1706742896707-44c5784bd31c?auto=format&fit=crop&w=1200&q=85"
+              alt="Casal de noivos brindando durante a festa de casamento"
+              loading="lazy">
+
+            <div class="event-info">
+              <small>Celebrações inesquecíveis</small>
+              <h3>Casamentos</h3>
+              <p>Um brinde ao começo de uma nova história.</p>
+            </div>
+          </article>
+
+          <article class="event-card reveal delay-1">
+            <img
+              src="https://chacarajardimdobosque.com.br/assets/capa-debutante-_rdE1w-7.png"
+              data-fallback="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1200&q=85"
+              alt="Debutante sorrindo com vestido rosa e drink na mão"
+              loading="lazy">
+
+            <div class="event-info">
+              <small>Uma noite para recordar</small>
+              <h3>Festas de 15 anos</h3>
+              <p>Cor, personalidade e drinks especiais.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services" id="servicos">
+      <div class="container">
+        <div class="services-intro reveal">
+          <div>
+            <div class="eyebrow">Onde a experiência acontece</div>
+            <h2 class="section-title">Seu evento merece<br><span>um bar à altura.</span></h2>
+          </div>
+
+          <p class="section-text">
+            Estrutura e atendimento pensados para acompanhar o ritmo e o estilo da sua comemoração.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-item reveal">
+            <span class="service-number">01 / EVENTOS</span>
+            <span class="service-arrow">↗</span>
+            <h3>Casamentos</h3>
+            <p>Coquetelaria para celebrar cada momento de um dia inesquecível.</p>
+          </article>
+
+          <article class="service-item reveal delay-1">
+            <span class="service-number">02 / CELEBRAÇÕES</span>
+            <span class="service-arrow">↗</span>
+            <h3>Debutantes</h3>
+            <p>Drinks coloridos e uma experiência especial para a grande noite.</p>
+          </article>
+
+          <article class="service-item reveal delay-2">
+            <span class="service-number">03 / PRIVATIVOS</span>
+            <span class="service-arrow">↗</span>
+            <h3>Festas particulares</h3>
+            <p>Um bar completo para aniversários, confraternizações e encontros.</p>
+          </article>
+
+          <article class="service-item reveal">
+            <span class="service-number">04 / CORPORATIVO</span>
+            <span class="service-arrow">↗</span>
+            <h3>Eventos empresariais</h3>
+            <p>Atendimento profissional para eventos e celebrações corporativas.</p>
+          </article>
+
+          <article class="service-item reveal delay-1">
+            <span class="service-number">05 / EXPERIÊNCIA</span>
+            <span class="service-arrow">↗</span>
+            <h3>Open bar</h3>
+            <p>Variedade de opções para brindar com seus convidados.</p>
+          </article>
+
+          <article class="service-item reveal delay-2">
+            <span class="service-number">06 / COQUETELARIA</span>
+            <span class="service-arrow">↗</span>
+            <h3>Drinks personalizados</h3>
+            <p>Combinações pensadas para dar identidade ao seu evento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAIPIRINHAS -->
+    <section class="drinks" id="drinks">
+      <div class="container drinks-layout">
+        <div class="drinks-content reveal">
+          <div class="eyebrow">Criatividade em cada combinação</div>
+
+          <h2 class="section-title">
+            Um clássico<br>
+            ou algo <span>novo?</span>
+          </h2>
+
+          <p class="section-text">
+            Das tradicionais caipirinhas aos coquetéis especiais, cada drink ganha atenção na escolha dos ingredientes, no preparo e na apresentação.
+          </p>
+
+          <p class="section-text">
+            Limão, frutas, gelo e combinações que deixam cada brinde ainda mais especial.
+          </p>
+
+          <a href="#contato" class="gold-button">Monte seu bar <b>↗</b></a>
+        </div>
+
+        <div class="drink-visual reveal delay-1">
+          <div class="drink-photo-main">
+            <img
+              src="https://cdn.sezamo.ro/images/meals/large/recipe_2169_1776931043512_classic-brazilian-caipirinha-cocktail_290bb664.jpg"
+              data-fallback="https://images.unsplash.com/photo-1536935338788846bb9981813?auto=format&fit=crop&w=1000&q=85"
+              alt="Caipirinha brasileira com limão, gelo e hortelã"
+              loading="lazy">
+          </div>
+
+          <div class="drink-photo-small">
+            <img
+              src="https://res.cloudinary.com/anora/image/upload/t_HeroImage-4_3-LG/f_auto/folkofolk%2Fcaipirinha_0"
+              data-fallback="https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?auto=format&fit=crop&w=800&q=85"
+              alt="Caipirinha servida em copo baixo com bastante gelo e limão"
+              loading="lazy">
+          </div>
+
+          <div class="drink-label">Caipirinhas & coquetéis</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="statement">
+      <div class="container reveal">
+        <p>O detalhe que faz a diferença</p>
+        <h2>
+          Não é apenas sobre o drink.<br>
+          É sobre tudo que acontece<br>
+          <em>ao redor dele.</em>
+        </h2>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="gallery" id="galeria">
+      <div class="container">
+        <div class="gallery-heading reveal">
+          <div class="eyebrow">Momentos que merecem um brinde</div>
+          <h2 class="section-title">Um pouco do nosso <span>universo.</span></h2>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img
+              src="https://res.cloudinary.com/anora/image/upload/t_HeroImage-4_3-LG/f_auto/folkofolk%2Fcaipirinha_0"
+              data-fallback="https://images.unsplash.com/photo-1536935338788846bb9981813?auto=format&fit=crop&w=1000&q=85"
+              alt="Caipirinha clássica com limão e gelo"
+              loading="lazy">
+          </div>
+
+          <div class="gallery-item reveal delay-1">
+            <img
+              src="https://chacarajardimdobosque.com.br/assets/capa-debutante-_rdE1w-7.png"
+              data-fallback="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=85"
+              alt="Debutante com vestido rosa e drink especial"
+              loading="lazy">
+          </div>
+
+          <div class="gallery-item reveal delay-2">
+            <img
+              src="https://static.wixstatic.com/media/f324eb_12b94529a78840bbacbefb7d1f26bf9c~mv2.png/v1/fill/w_1000%2Ch_800%2Cal_c%2Cq_90%2Cenc_avif%2Cquality_auto/f324eb_12b94529a78840bbacbefb7d1f26bf9c~mv2.png"
+              data-fallback="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=85"
+              alt="Bartender preparando caipirinha com limão fresco"
+              loading="lazy">
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://cdn.sezamo.ro/images/meals/large/recipe_2169_1776931043512_classic-brazilian-caipirinha-cocktail_290bb664.jpg"
+              data-fallback="https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?auto=format&fit=crop&w=1400&q=85"
+              alt="Drink refrescante com limão, gelo e hortelã"
+              loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="final-cta" id="contato">
+      <div class="container reveal">
+        <div class="eyebrow">Seu próximo evento começa aqui</div>
+
+        <h2>
+          Vamos brindar<br>
+          a algo <span>inesquecível?</span>
+        </h2>
+
+        <p>Conte um pouco sobre seu evento e vamos criar uma experiência especial.</p>
+
+        <a
+          href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20meu%20evento."
+          target="_blank"
+          rel="noopener"
+          class="gold-button">
+          Solicitar orçamento <b>↗</b>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="#inicio" class="logo">
+            INOVAÇÃO
+            <span>BARTENDERS</span>
+          </a>
+
+          <p>
+            Barman e coquetelaria para eventos. Experiências especiais, drinks preparados na hora e atenção em cada detalhe.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Navegação</h4>
+            <a href="#sobre">A experiência</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#galeria">Galeria</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contato</h4>
+            <a href="#contato">Solicitar orçamento</a>
+            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp</a>
+            <p>São Paulo · SP</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Inovação Bartenders. Todos os direitos reservados.</span>
+        <span>Feito para celebrar.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLUTUANTE -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20meu%20evento."
+    target="_blank"
+    rel="noopener"
+    aria-label="Fale pelo WhatsApp">
+
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 .5C7.45.5.5 7.45.5 16c0 2.73.72 5.4 2.08 7.76L.4 31.6l8.05-2.11A15.43 15.43 0 0 0 16 31.5c8.55 0 15.5-6.95 15.5-15.5S24.55.5 16 .5zm0 28.35c-2.3 0-4.55-.62-6.5-1.8l-.47-.28-4.78 1.25 1.28-4.66-.31-.48A12.78 12.78 0 0 1 3.3 16C3.3 8.99 8.99 3.3 16 3.3S28.7 8.99 28.7 16 23.01 28.85 16 28.85zm7.01-9.57c-.38-.19-2.23-1.1-2.57-1.23-.35-.13-.6-.19-.85.19-.25.38-.98 1.23-1.2 1.48-.22.25-.44.28-.82.09-.38-.19-1.6-.59-3.05-1.88-1.13-1.01-1.89-2.26-2.11-2.64-.22-.38-.02-.58.17-.77.17-.17.38-.44.57-.66.19-.22.25-.38.38-.63.13-.25.06-.47-.03-.66-.1-.19-.85-2.05-1.16-2.8-.3-.73-.61-.63-.85-.64h-.73c-.25 0-.66.09-1.01.47-.35.38-1.33 1.3-1.33 3.16s1.36 3.66 1.55 3.91c.19.25 2.67 4.08 6.47 5.72.9.39 1.6.62 2.14.79.9.29 1.72.25 2.37.15.72-.11 2.23-.91 2.54-1.8.32-.89.32-1.64.22-1.8-.1-.16-.35-.25-.73-.44z"/>
+    </svg>
+  </a>
+
+  <script>
+    // MENU MOBILE
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // ANIMAÇÃO AO ROLAR
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(element => {
+      observer.observe(element);
+    });
+
+    // FALLBACK: TROCA AUTOMATICAMENTE IMAGENS QUE NÃO CARREGAREM
+    document.querySelectorAll('img[data-fallback]').forEach(img => {
+      img.addEventListener('error', function () {
+        if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+          this.src = this.dataset.fallback;
+        }
+      });
+    });
+
+    // PARALLAX LEVE NO HERO
+    const heroPhoto = document.querySelector('.hero-photo img');
+
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth > 700 && window.scrollY < window.innerHeight) {
+        heroPhoto.style.objectPosition = `center calc(38% + ${window.scrollY * 0.08}px)`;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
